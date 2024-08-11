@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
             this.lineHeight = this.fontSize * 0.8;
             this.maxTextWidth = this.canvasWidth * 0.8;
             this.particles = [];
-            this.gap = 2; // Updated gap
+            this.gap = 1; // Updated gap
             this.currentText = '';
             this.transitioning = false;
             this.mouse = {
