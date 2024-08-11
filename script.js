@@ -3,6 +3,8 @@ window.addEventListener('load', function() {
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+	
+	//contact
 
     class Particle {
         constructor(effect, x, y, color) {
@@ -83,7 +85,7 @@ window.addEventListener('load', function() {
             gradient.addColorStop(0.3, 'red');
             gradient.addColorStop(0.5, 'orange');
             gradient.addColorStop(0.7, 'yellow');
-            this.context.fillStyle = gradient;
+            this.context.fillStyle = 'white';
             this.context.textAlign = 'center';
             this.context.textBaseline = 'middle';
             this.context.lineWidth = 3;
