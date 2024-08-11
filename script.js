@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
             this.lineHeight = this.fontSize * 0.8;
             this.maxTextWidth = this.canvasWidth * 0.8;
             this.particles = [];
-            this.gap = 2; // Updated gap
+            this.gap = 1; // Updated gap
             this.currentText = '';
             this.transitioning = false;
             this.mouse = {
@@ -89,7 +89,7 @@ window.addEventListener('load', function() {
             this.context.textAlign = 'center';
             this.context.textBaseline = 'middle';
             this.context.lineWidth = 3;
-            this.context.strokeStyle = 'orange';
+            //this.context.strokeStyle = 'orange';
             this.context.font = this.fontSize + 'px Helvetica';
 
             let linesArray = [];
@@ -184,7 +184,7 @@ window.addEventListener('load', function() {
     // After 2 seconds, transition to "PostQuem"
     setTimeout(() => {
         effect.updateText('PostQuem');
-    }, 3000);
+    }, 4000);
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
