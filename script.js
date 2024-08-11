@@ -184,7 +184,7 @@ window.addEventListener('load', function() {
     // After 2 seconds, transition to "PostQuem"
     setTimeout(() => {
         effect.updateText('PostQuem');
-    }, 4000);
+    }, 5000);
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);

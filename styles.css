@@ -18,11 +18,18 @@ input {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
-} /* Added closing curly brace here */
+}
 
 #text-container {
-    position: relative;
-    display: inline-block;
+    position: absolute; /* Ensure the container is positioned relative to the canvas */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Use flexbox to position items */
+    justify-content: space-between; /* Space the words to the left and right */
+    align-items: center; /* Vertically center the words */
+    padding: 0 50px; /* Add 50px padding to left and right */
     z-index: 2; /* Ensure text is above the canvas */
 }
 
@@ -30,18 +37,4 @@ input {
     font-size: 24px;
     font-family: Arial, sans-serif;
     color: white; /* White text for visibility */
-    position: absolute;
-}
-
-/* Fixed positions for testing */
-.word:nth-child(1) {
-    left: 50px; /* Adjust as needed */
-    top: 50px; /* Adjust as needed */
-}
-
-.word:nth-child(2) {
-    left: 50px; /* Adjust as needed */
-    top: 100px; /* Adjust as needed */
-}
-
 }
