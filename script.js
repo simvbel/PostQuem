@@ -6,6 +6,8 @@ window.addEventListener('load', function(){
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	
+	//input
+	
 	class Particle{
 		constructor(effect, x, y, color){
 			this.effect = effect;
@@ -58,13 +60,13 @@ window.addEventListener('load', function(){
 			this.fontSize = 100
 			this.lineHeight = this.fontSize * 0.8;
 			this.maxTextWidth = this.canvasWidth * 0.8;
-			this.textInput = document.getElementById('textInput');
+			/*this.textInput = document.getElementById('textInput');
 			this.textInput.addEventListener('keyup', (e) => {
 				if (e.key !==' ') {
 					this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeigth);
 					this.wrapText(e.target.value);
 				}
-			});
+			});*/
 			// particle text
 			this.particles = [];
 			this.gap = 2;
@@ -149,7 +151,7 @@ window.addEventListener('load', function(){
 	}
 	
 	const effect = new Effect(ctx, canvas.width, canvas.height);
-	effect.wrapText('PostQuem, patrimoine et tecnologies');
+	effect.wrapText('PostQuem, patrimoine et technologies');
 	effect.render();
 	
 	function animate(){
@@ -163,7 +165,7 @@ window.addEventListener('load', function(){
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 		effect.resize(canvas.width, canvas.height);
-		effect.wrapText('PostQuem, patrimoine et tecnologies');
+		effect.wrapText('PostQuem, patrimoine et technologies');
 	});
 	
 });
