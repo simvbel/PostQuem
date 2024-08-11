@@ -38,3 +38,14 @@ input {
     font-family: Arial, sans-serif;
     color: white; /* White text for visibility */
 }
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the text color of the .word class */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+a:hover {
+    opacity: 0.8; /* Optional: Change opacity on hover to indicate clickability */
+}
+
