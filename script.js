@@ -8,7 +8,6 @@ window.addEventListener('load', function() {
             element.style.pointerEvents = 'auto'; // Enable interaction
         });
     }, 6000);
-	//lorem
 
     // Initialize canvas and particle effects
     const canvas = document.getElementById('canvas1');
@@ -213,20 +212,26 @@ window.addEventListener('load', function() {
             effect.updateText(element.getAttribute('data-text'));
         });
     });
+});
 
-    // Show content when "Services" is clicked
-	document.getElementById('services-link').addEventListener('click', function(event) {
-		event.preventDefault(); // Prevent default link behavior
-		document.getElementById('services-blocks').style.display = 'flex'; // Show all blocks
-		document.getElementById('block2').style.display = 'none';
-		document.getElementById('block3').style.display = 'none';
-	});
+// Show content when "Services" or "Contacts" is clicked
+document.addEventListener('DOMContentLoaded', function() {
+    const servicesLink = document.getElementById('services-link');
+    const contactsLink = document.getElementById('contacts-link');
+    const servicesBlocks = document.getElementById('services-blocks');
+    const contactsBlocks = document.getElementById('contacts-blocks');
 
-// Show content when "Contacts" is clicked
-	document.getElementById('contacts-link').addEventListener('click', function(event) {
-		event.preventDefault(); // Prevent default link behavior
-		document.getElementById('services-blocks').style.display = 'none'; // Hide all blocks
-		document.getElementById('block2').style.display = 'block';
-		document.getElementById('block3').style.display = 'none';
-	});
+    servicesLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        servicesBlocks.style.display = 'flex'; // Show the services blocks
+        contactsBlocks.style.display = 'none'; // Hide the contacts blocks
+        servicesBlocks.classList.add('show'); // Add the show class for fade-in
+    });
+
+    contactsLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        servicesBlocks.style.display = 'none'; // Hide the services blocks
+        contactsBlocks.style.display = 'flex'; // Show the contacts blocks
+        contactsBlocks.classList.add('show'); // Add the show class for fade-in
+    });
 });
