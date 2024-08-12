@@ -57,8 +57,9 @@ body {
 
 .content-blocks {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
+	flex-wrap: wrap; /* Allow wrapping to new rows if needed */
 }
 
 .content-block {
@@ -67,6 +68,8 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+	flex: 1 1 calc(33.333% - 20px); /* Responsive width of blocks */
+    box-sizing: border-box; /* Include padding and border in the element’s total width and height */
 }
 
 .content-block h2 {
@@ -78,6 +81,9 @@ body {
     .content-blocks {
         gap: 10px; /* Reduce gap on smaller screens */
     }
+	.content-block {
+        flex: 1 1 calc(50% - 10px); /* Adjust width for tablets */
+    }
 }
 
 @media (max-width: 480px) { /* For mobile phones */
@@ -85,4 +91,11 @@ body {
         width: 100%; /* Make the content full-width */
         padding: 10px;
     }
+	.content-block {
+        flex-direction: column; /* Stack blocks vertically */
+	}	
+	.content-block {
+        width: 100%; /* Ensure blocks take full width */
+        margin-bottom: 10px; /* Space between blocks */
+    }	
 }
