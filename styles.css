@@ -37,6 +37,14 @@ input {
     font-size: 24px;
     font-family: Arial, sans-serif;
     color: white; /* White text for visibility */
+    opacity: 0;
+    pointer-events: none; /* Disable interactions */
+    transition: opacity 2s ease-in-out, color 0.3s ease;
+}
+
+.word.show {
+    opacity: 1;
+    pointer-events: auto; /* Enable interactions */
 }
 
 a {
@@ -47,5 +55,5 @@ a {
 
 a:hover {
     opacity: 0.8; /* Optional: Change opacity on hover to indicate clickability */
+    color: #ccc; /* Slight color change on hover for visibility */
 }
-

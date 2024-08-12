@@ -1,10 +1,19 @@
 window.addEventListener('load', function() {
+    const textElements = document.querySelectorAll('.word');
+
+    // Fade in words after 5 seconds
+    setTimeout(() => {
+        textElements.forEach((element) => {
+            element.classList.add('show');
+            element.style.pointerEvents = 'auto'; // Enable interaction
+        });
+    }, 6000);
+
+    // Initialize canvas and particle effects
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-	
-	//contact
 
     class Particle {
         constructor(effect, x, y, color) {
@@ -17,7 +26,6 @@ window.addEventListener('load', function() {
             this.size = this.effect.gap;
             this.vx = 0.35 + 0.15 * Math.random(); // Reduced speed
             this.vy = 0.35 + 0.15 * Math.random(); // Reduced speed
-
             this.targetX = x;
             this.targetY = y;
             this.friction = 0.7 + 0.2 * Math.random(); // Lower friction
@@ -89,7 +97,6 @@ window.addEventListener('load', function() {
             this.context.textAlign = 'center';
             this.context.textBaseline = 'middle';
             this.context.lineWidth = 3;
-            //this.context.strokeStyle = 'orange';
             this.context.font = this.fontSize + 'px Helvetica';
 
             let linesArray = [];
@@ -181,7 +188,7 @@ window.addEventListener('load', function() {
     // Display "Bienvenue chez" initially
     effect.wrapText('Bienvenue chez');
 
-    // After 2 seconds, transition to "PostQuem"
+    // After 5 seconds, transition to "PostQuem"
     setTimeout(() => {
         effect.updateText('PostQuem');
     }, 5000);
@@ -200,14 +207,9 @@ window.addEventListener('load', function() {
     });
 
     // Add mouse hover event listeners to change text
-    const textElements = document.querySelectorAll('.word');
     textElements.forEach((element) => {
         element.addEventListener('mouseover', () => {
             effect.updateText(element.getAttribute('data-text'));
         });
     });
-
-    // Remove the mouseout event listener to keep text unchanged when mouse is not hovering
 });
-
-
