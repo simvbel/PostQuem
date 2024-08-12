@@ -1,59 +1,88 @@
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: black; /* Set the background to black */
+    font-family: Helvetica, Arial, sans-serif; /* Use Helvetica font */
+    color: white; /* Set body text color to white */
 }
 
-canvas {
-    background: black;
-    position: absolute;
-    top: 0;
-    left: 0;
+#header {
+    position: relative;
+    height: 400px; /* Set the height for the floating header */
     width: 100%;
-    height: 100%;
-}
-
-input {
-    position: absolute;
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px;
+    background-color: black; /* Ensure background is black */
+    margin: 0; /* Remove any margin around the header */
+    padding: 0; /* Remove any padding around the header */
 }
 
 #text-container {
-    position: absolute; /* Ensure the container is positioned relative to the canvas */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex; /* Use flexbox to position items */
-    justify-content: space-between; /* Space the words to the left and right */
-    align-items: center; /* Vertically center the words */
-    padding: 0 50px; /* Add 50px padding to left and right */
-    z-index: 2; /* Ensure text is above the canvas */
+    position: absolute;
+    top: 50%; /* Center vertically in the header */
+    left: 50px; /* 50px from the left edge */
+    right: 50px; /* 50px from the right edge */
+    transform: translateY(-50%); /* Adjust vertical centering */
+    display: flex;
+    justify-content: space-between; /* Position links on the sides */
+    align-items: center; /* Center items vertically within the container */
+    z-index: 10; /* Ensure it is on top of the canvas */
 }
 
 .word {
-    font-size: 24px;
-    font-family: Arial, sans-serif;
-    color: white; /* White text for visibility */
-    opacity: 0;
-    pointer-events: none; /* Disable interactions */
+    opacity: 0; /* Start hidden */
     transition: opacity 2s ease-in-out, color 0.3s ease;
+    font-size: 3rem;
+    color: white; /* Set the text color to white */
+    text-decoration: none; /* Remove underline from links */
+    pointer-events: none; /* Prevent interaction until visible */
 }
 
 .word.show {
-    opacity: 1;
-    pointer-events: auto; /* Enable interactions */
+    opacity: 1; /* Fade in */
+    pointer-events: auto; /* Enable interaction */
 }
 
-a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Use the text color of the .word class */
-    cursor: pointer; /* Show pointer cursor on hover */
+.word:hover {
+    color: #f39c12; /* Example hover effect: change color */
+    cursor: pointer;
 }
 
-a:hover {
-    opacity: 0.8; /* Optional: Change opacity on hover to indicate clickability */
-    color: #ccc; /* Slight color change on hover for visibility */
+#content {
+    padding: 20px;
+    background-color: black; /* Set background color for content area */
+    color: white; /* Text color for content area */
+    font-family: Helvetica, Arial, sans-serif; /* Consistent font */
+    margin: 0; /* Remove any margin around the content */
+}
+
+.content-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content-block {
+    background-color: black; /* Set background color for blocks */
+    color: white; /* Text color for blocks */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.content-block h2 {
+    margin-bottom: 10px; /* Space below the title */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* For tablets and small screens */
+    .content-blocks {
+        gap: 10px; /* Reduce gap on smaller screens */
+    }
+}
+
+@media (max-width: 480px) { /* For mobile phones */
+    #content {
+        width: 100%; /* Make the content full-width */
+        padding: 10px;
+    }
 }

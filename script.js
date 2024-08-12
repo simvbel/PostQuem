@@ -1,19 +1,20 @@
 window.addEventListener('load', function() {
     const textElements = document.querySelectorAll('.word');
 
-    // Fade in words after 5 seconds
+    // Fade in words after 6 seconds
     setTimeout(() => {
         textElements.forEach((element) => {
             element.classList.add('show');
             element.style.pointerEvents = 'auto'; // Enable interaction
         });
     }, 6000);
+	//lorem
 
     // Initialize canvas and particle effects
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = 400;
 
     class Particle {
         constructor(effect, x, y, color) {
@@ -202,7 +203,7 @@ window.addEventListener('load', function() {
 
     window.addEventListener('resize', function () {
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.height = 400;
         effect.resize(canvas.width, canvas.height); // Ensure proper text rendering on resize
     });
 
@@ -212,4 +213,20 @@ window.addEventListener('load', function() {
             effect.updateText(element.getAttribute('data-text'));
         });
     });
+
+    // Show content when "Services" is clicked
+	document.getElementById('services-link').addEventListener('click', function(event) {
+		event.preventDefault(); // Prevent default link behavior
+		document.getElementById('services-blocks').style.display = 'flex'; // Show all blocks
+		document.getElementById('block2').style.display = 'none';
+		document.getElementById('block3').style.display = 'none';
+	});
+
+// Show content when "Contacts" is clicked
+	document.getElementById('contacts-link').addEventListener('click', function(event) {
+		event.preventDefault(); // Prevent default link behavior
+		document.getElementById('services-blocks').style.display = 'none'; // Hide all blocks
+		document.getElementById('block2').style.display = 'block';
+		document.getElementById('block3').style.display = 'none';
+	});
 });
