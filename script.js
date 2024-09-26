@@ -1,5 +1,7 @@
 window.addEventListener('load', function() {
     const textElements = document.querySelectorAll('.word');
+	
+	//fontSize
 
     // Fade in words after 6 seconds
     setTimeout(() => {
@@ -12,6 +14,8 @@ window.addEventListener('load', function() {
     // Initialize canvas and particle effects
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+    // Responsive canvas sizing
     canvas.width = window.innerWidth;
     canvas.height = 400;
 
@@ -69,7 +73,9 @@ window.addEventListener('load', function() {
             this.canvasHeigth = canvasHeigth;
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeigth / 2;
-            this.fontSize = 200;
+
+            // Dynamically adjust font size based on canvas width
+            this.fontSize = Math.max(50, this.canvasWidth * 0.1); 
             this.lineHeight = this.fontSize * 0.8;
             this.maxTextWidth = this.canvasWidth * 0.8;
             this.particles = [];
@@ -89,6 +95,8 @@ window.addEventListener('load', function() {
 
         wrapText(text) {
             this.currentText = text;
+            this.fontSize = Math.max(50, this.canvasWidth * 0.070); // Adjust font size dynamically
+            this.lineHeight = this.fontSize * 0.8;
             const gradient = this.context.createLinearGradient(0, 0, this.canvasWidth, this.canvasHeigth);
             gradient.addColorStop(0.3, 'red');
             gradient.addColorStop(0.5, 'orange');
@@ -141,21 +149,18 @@ window.addEventListener('load', function() {
             }
 
             if (this.transitioning) {
-                // Transition mode: Smoothly move existing particles to new positions
                 this.particles.forEach((particle, index) => {
                     if (newParticles[index]) {
                         particle.targetX = newParticles[index].originX;
                         particle.targetY = newParticles[index].originY;
                         particle.color = newParticles[index].color;
-                        particle.visible = true; // Ensure existing particles are visible
+                        particle.visible = true;
                     } else {
-                        particle.visible = false; // Hide extra particles
+                        particle.visible = false;
                     }
                 });
-                // Add any new particles from newParticles to particles
                 this.particles = [...this.particles, ...newParticles.slice(this.particles.length)];
             } else {
-                // Initial animation mode: Set initial particles
                 this.particles = [...newParticles];
             }
         }
@@ -173,8 +178,7 @@ window.addEventListener('load', function() {
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeigth / 2;
             this.maxTextWidth = this.canvasWidth * 0.8;
-            // Clear and redraw text to ensure particles are in correct positions
-            this.wrapText(this.currentText);
+            this.wrapText(this.currentText); // Redraw text and particles after resize
         }
 
         updateText(text) {
@@ -230,8 +234,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     contactsLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default anchor behavior
-        servicesBlocks.style.display = 'none'; // Hide the services blocks
         contactsBlocks.style.display = 'flex'; // Show the contacts blocks
+        servicesBlocks.style.display = 'none'; // Hide the services blocks
         contactsBlocks.classList.add('show'); // Add the show class for fade-in
     });
 });

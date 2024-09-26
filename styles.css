@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: black; /* Set the background to black */
+    background-color: white; /* Set the background to black */
     font-family: Helvetica, Arial, sans-serif; /* Use Helvetica font */
     color: white; /* Set body text color to white */
 }
@@ -31,7 +31,7 @@ body {
 .word {
     opacity: 0; /* Start hidden */
     transition: opacity 2s ease-in-out, color 0.3s ease;
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 2vw + 1rem, 3rem); /* Responsive font size using clamp */
     color: white; /* Set the text color to white */
     text-decoration: none; /* Remove underline from links */
     pointer-events: none; /* Prevent interaction until visible */
@@ -72,6 +72,38 @@ body {
     box-sizing: border-box; /* Include padding and border in the element’s total width and height */
 }
 
+.download-wrapper {
+    display: flex; /* Enables flexbox layout */
+    justify-content: center; /* Centers content horizontally */
+    margin: 30px 0; /* Optional: Adds vertical spacing above and below */
+    width: 100%; /* Make the wrapper full width */
+}
+
+.download-section {
+	margin-top: 30px auto; /* Adds spacing above the section */
+    text-align: center; /* Centers the download link */
+    padding: 20px; /* Adds padding for spacing inside the section */
+    background-color: black; 
+    border-radius: 8px; /* Softens the corners */
+	width: fit-content; /* Ensures the section's width is just enough to fit the content */
+}
+
+.download-link {
+    text-decoration: none; /* Removes the underline */
+    color: #ffffff; /* Sets the text color to white */
+    background-color: #007BFF; /* Sets the background color of the button */
+    padding: 15px 25px; /* Adds padding inside the button */
+    border-radius: 5px; /* Softens the button's corners */
+    font-size: 1.1em; /* Makes the text a bit larger */
+    font-weight: bold; /* Makes the text bold */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.download-link:hover {
+    background-color: #0056b3; /* Darkens the button on hover */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+
+
 .content-blocks.show {
     opacity: 1; /* Fade in */
 }
@@ -79,6 +111,15 @@ body {
 .content-block h2 {
     margin-bottom: 10px; /* Space below the title */
 }
+
+
+
+
+
+
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) { /* For tablets and small screens */
@@ -107,4 +148,17 @@ body {
 
 #contacts-blocks.show {
     display: flex; /* Display as flex when visible */
+}
+
+@media (max-width: 768px) {
+    .word {
+        font-size: 2.5rem; /* Adjust font size for tablets */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .word {
+        font-size: 2rem; /* Adjust font size for mobile screens */
+    }
 }
