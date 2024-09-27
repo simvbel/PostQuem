@@ -39,7 +39,7 @@ body {
     justify-content: space-between; /* Position links on the sides */
     align-items: center; /* Center items vertically within the container */
     z-index: 10; /* Ensure it is on top of the canvas */
-    border: 2px solid blue; /* Debugging border */
+    /*border: 2px solid blue; /* Debugging border */
 }
 
 .word {
