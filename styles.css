@@ -16,6 +16,11 @@ body {
     padding: 0; /* Remove any padding around the header */
 }
 
+.parent-container {
+    padding: 20px;
+}
+
+
 #text-container {
     position: absolute;
     top: 50%; /* Center vertically in the header */
@@ -150,15 +155,22 @@ body {
     display: flex; /* Display as flex when visible */
 }
 
-@media (max-width: 768px) {
-    .word {
-        font-size: 2.5rem; /* Adjust font size for tablets */
-    }
-}
-
 /* For mobile phones */
-@media (max-width: 480px) {
-    .word {
-        font-size: 2rem; /* Adjust font size for mobile screens */
+@media (max-width: 480px) { /* For mobile phones */
+    #text-container {
+        position: absolute; /* Keep it absolute */
+        background-color: lightgray; /* Background color for visibility only at this width */
+        top: 25%; /* Adjust vertical position as needed */
+        left: 10px; /* Add padding from the left */
+        right: 10px; /* Add padding from the right */
+        transform: translateY(-25%); /* Center it vertically */
+        display: flex;
+        justify-content: space-between; /* Space links on the sides */
+        z-index: 10; /* Ensure it is on top of the canvas */
+    }
+    
+    /* Other styles for mobile */
+    .content-block {
+        flex: 1 1 100%; /* Full width for mobile screens */
     }
 }

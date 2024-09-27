@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostQuem</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Optional: Add description and keywords for SEO -->
+    <meta name="description" content="PostQuem specializes in heritage analysis and archaeological services.">
+    <meta name="keywords" content="heritage, archaeology, architectural analysis, geomatics, PostQuem">
 </head>
 <body>
     <div id="header">
         <canvas id="canvas1"></canvas>
-        <div id="text-container">
-            <a href="#" id="services-link" class="word" data-text="Services">Services</a>
-			<a href="#" id="contacts-link" class="word" data-text="Contacts">Contacts</a>        
-		</div>
+		<div class="parent-container">
+			<div id="text-container">
+				<a href="#" id="services-link" class="word" data-text="Services">Services</a>
+				<a href="#" id="contacts-link" class="word" data-text="Contacts">Contacts</a>        
+			</div>
+		</div>	
     </div>
     <div id="content">
         <div id="services-blocks" class="content-blocks" style="display: none;">
@@ -29,19 +34,19 @@
                 <h2>Gestion de données</h2>
                 <p>PostQuem utilise plusieurs bases de données internes permettant de traiter des données archéologiques ou architecturales. Nous développons également des outils de traitement des données architecturales et de cartographie 3D du patrimoine bâti, de même que nous avons plusieurs projets en cours portant sur l’archivage et le traitement de données géographiques provenant des plans anciens, les descriptions architecturales des vestiges archéologiques ou encore des outils de traitement des collections archéologiques.</p>
             </div>
-		<div class="download-wrapper">	
-			<div class="download-section">
-				<a href="https://raw.githubusercontent.com/simvbel/PostQuem/main/Offre%20de%20services_PostQuem_20240520.pdf" download="PostQuem_Services.pdf" class="download-link">
-					Télécharger la brochure PDF sur les services
-				</a>
-			</div>
-		</div>
-	</div>
-		
-		<div id="contacts-blocks" class="content-blocks" style="display: none;">
+            <div class="download-wrapper">    
+                <div class="download-section">
+                    <a href="https://raw.githubusercontent.com/simvbel/PostQuem/main/Offre%20de%20services_PostQuem_20240520.pdf" download="PostQuem_Services.pdf" class="download-link">
+                        Télécharger la brochure PDF sur les services
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="contacts-blocks" class="content-blocks" style="display: none;">
             <div class="content-block">
                 <h2>Coordonnées</h2>
-                <p>Pour nous joindre, vous pouvez nous appeler au 438-837-1132 ou nous envoyer un courriel à info@postquem.com. Nous sommes également disponibles sur les réseaux sociaux pour répondre à vos questions et pour discuter de vos projets.</p>
+                <p>Pour nous joindre, vous pouvez nous appeler au 438-837-1132 ou nous envoyer un courriel à <a href="mailto:info@postquem.com">info@postquem.com</a>. Nous sommes également disponibles sur les réseaux sociaux pour répondre à vos questions et pour discuter de vos projets.</p>
             </div>
             <div class="content-block">
                 <h2>Localisation</h2>
@@ -52,3 +57,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
