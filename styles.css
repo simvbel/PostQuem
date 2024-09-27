@@ -31,6 +31,7 @@ body {
     justify-content: space-between; /* Position links on the sides */
     align-items: center; /* Center items vertically within the container */
     z-index: 10; /* Ensure it is on top of the canvas */
+	border: 2px solid red; /* Debugging border */
 }
 
 .word {
@@ -158,15 +159,10 @@ body {
 /* For mobile phones */
 @media (max-width: 480px) { /* For mobile phones */
     #text-container {
-        position: absolute; /* Keep it absolute */
-        background-color: lightgray; /* Background color for visibility only at this width */
         top: 25%; /* Adjust vertical position as needed */
-        left: 10px; /* Add padding from the left */
-        right: 10px; /* Add padding from the right */
         transform: translateY(-25%); /* Center it vertically */
-        display: flex;
-        justify-content: space-between; /* Space links on the sides */
-        z-index: 10; /* Ensure it is on top of the canvas */
+        background-color: lightgray; /* Background for visibility */
+        border: 2px dashed blue; /* Change border for visibility */
     }
     
     /* Other styles for mobile */
