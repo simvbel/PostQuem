@@ -20,7 +20,6 @@ body {
     padding: 20px;
 }
 
-
 #text-container {
     position: absolute;
     top: 50%; /* Center vertically in the header */
@@ -31,7 +30,7 @@ body {
     justify-content: space-between; /* Position links on the sides */
     align-items: center; /* Center items vertically within the container */
     z-index: 10; /* Ensure it is on top of the canvas */
-	border: 2px solid red; /* Debugging border */
+    border: 2px solid blue; /* Debugging border */
 }
 
 .word {
@@ -86,12 +85,12 @@ body {
 }
 
 .download-section {
-	margin-top: 30px auto; /* Adds spacing above the section */
+    margin-top: 30px auto; /* Adds spacing above the section */
     text-align: center; /* Centers the download link */
     padding: 20px; /* Adds padding for spacing inside the section */
     background-color: black; 
     border-radius: 8px; /* Softens the corners */
-	width: fit-content; /* Ensures the section's width is just enough to fit the content */
+    width: fit-content; /* Ensures the section's width is just enough to fit the content */
 }
 
 .download-link {
@@ -108,7 +107,7 @@ body {
 .download-link:hover {
     background-color: #0056b3; /* Darkens the button on hover */
     cursor: pointer; /* Changes the cursor to a pointer on hover */
-
+}
 
 .content-blocks.show {
     opacity: 1; /* Fade in */
@@ -118,30 +117,25 @@ body {
     margin-bottom: 10px; /* Space below the title */
 }
 
-
-
-
-
-
-
-
-
-
 /* Responsive adjustments */
 @media (max-width: 768px) { /* For tablets and small screens */
+    #content {
+        width: 100%; /* Make the content full-width */
+        padding: 10px; /* Adjust padding */
+    }
     .content-blocks {
         gap: 10px; /* Reduce gap on smaller screens */
     }
     .content-block {
         flex: 1 1 calc(50% - 10px); /* Adjust width for tablets */
     }
+    #text-container {
+        top: 25%; /* Adjust vertical position as needed */
+        transform: translateY(-25%); /* Center it vertically */
+    }
 }
 
 @media (max-width: 480px) { /* For mobile phones */
-    #content {
-        width: 100%; /* Make the content full-width */
-        padding: 10px;
-    }
     .content-block {
         flex: 1 1 100%; /* Full width for mobile screens */
     }
@@ -154,19 +148,4 @@ body {
 
 #contacts-blocks.show {
     display: flex; /* Display as flex when visible */
-}
-
-/* For mobile phones */
-@media (max-width: 480px) { /* For mobile phones */
-    #text-container {
-        top: 25%; /* Adjust vertical position as needed */
-        transform: translateY(-25%); /* Center it vertically */
-        background-color: lightgray; /* Background for visibility */
-        border: 2px dashed blue; /* Change border for visibility */
-    }
-    
-    /* Other styles for mobile */
-    .content-block {
-        flex: 1 1 100%; /* Full width for mobile screens */
-    }
 }
