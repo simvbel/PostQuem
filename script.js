@@ -83,10 +83,11 @@ window.addEventListener('load', function() {
             this.currentText = '';
             this.transitioning = false;
             this.mouse = {
-                radius: 20000,
+                radius: this.canvasWidth * 2,
                 x: 0,
                 y: 0
-            };
+			};
+			
             window.addEventListener('mousemove', (e) => {
                 this.mouse.x = e.x;
                 this.mouse.y = e.y;
@@ -178,6 +179,7 @@ window.addEventListener('load', function() {
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeigth / 2;
             this.maxTextWidth = this.canvasWidth * 0.8;
+			this.mouse.radius = this.canvasWidth * 2;
             this.wrapText(this.currentText); // Redraw text and particles after resize
         }
 
