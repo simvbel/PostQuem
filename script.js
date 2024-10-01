@@ -1,7 +1,7 @@
-window.addEventListener('load', function() {
+// Animation Script
+window.addEventListener('load', function () {
     const textElements = document.querySelectorAll('.word');
-	
-	//fontSize
+    let hoverTimeout; // To track the hover timeout for smooth transitions
 
     // Fade in words after 6 seconds
     setTimeout(() => {
@@ -67,15 +67,15 @@ window.addEventListener('load', function() {
     }
 
     class Effect {
-        constructor(context, canvasWidth, canvasHeigth) {
+        constructor(context, canvasWidth, canvasHeight) {
             this.context = context;
             this.canvasWidth = canvasWidth;
-            this.canvasHeigth = canvasHeigth;
+            this.canvasHeigth = canvasHeight; // Make sure this is consistently used
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeigth / 2;
 
             // Dynamically adjust font size based on canvas width
-            this.fontSize = Math.max(50, this.canvasWidth * 0.1); 
+            this.fontSize = Math.max(50, this.canvasWidth * 0.1);
             this.lineHeight = this.fontSize * 0.8;
             this.maxTextWidth = this.canvasWidth * 0.8;
             this.particles = [];
@@ -86,8 +86,8 @@ window.addEventListener('load', function() {
                 radius: this.canvasWidth * 2,
                 x: 0,
                 y: 0
-			};
-			
+            };
+
             window.addEventListener('mousemove', (e) => {
                 this.mouse.x = e.x;
                 this.mouse.y = e.y;
@@ -149,21 +149,27 @@ window.addEventListener('load', function() {
                 }
             }
 
-            if (this.transitioning) {
-                this.particles.forEach((particle, index) => {
-                    if (newParticles[index]) {
-                        particle.targetX = newParticles[index].originX;
-                        particle.targetY = newParticles[index].originY;
-                        particle.color = newParticles[index].color;
-                        particle.visible = true;
-                    } else {
-                        particle.visible = false;
-                    }
-                });
-                this.particles = [...this.particles, ...newParticles.slice(this.particles.length)];
-            } else {
-                this.particles = [...newParticles];
-            }
+            // Remove particles before transitioning to new text
+            this.particles.forEach((particle) => {
+                particle.visible = false; // Set existing particles to not visible
+            });
+
+            // Update particles for new text
+            newParticles.forEach((newParticle, index) => {
+                if (this.particles[index]) {
+                    // If there's an existing particle, update its target position and color
+                    this.particles[index].targetX = newParticle.originX;
+                    this.particles[index].targetY = newParticle.originY;
+                    this.particles[index].color = newParticle.color;
+                    this.particles[index].visible = true; // Make it visible
+                } else {
+                    // Otherwise, add the new particle
+                    this.particles.push(newParticle);
+                }
+            });
+
+            // Clean up any remaining particles that are still not visible
+            this.particles = this.particles.filter(p => p.visible);
         }
 
         render() {
@@ -179,7 +185,7 @@ window.addEventListener('load', function() {
             this.textX = this.canvasWidth / 2;
             this.textY = this.canvasHeigth / 2;
             this.maxTextWidth = this.canvasWidth * 0.8;
-			this.mouse.radius = this.canvasWidth * 2;
+            this.mouse.radius = this.canvasWidth * 2;
             this.wrapText(this.currentText); // Redraw text and particles after resize
         }
 
@@ -196,6 +202,7 @@ window.addEventListener('load', function() {
 
     // After 5 seconds, transition to "PostQuem"
     setTimeout(() => {
+        console.log("Introduction");
         effect.updateText('PostQuem');
     }, 5000);
 
@@ -215,29 +222,64 @@ window.addEventListener('load', function() {
     // Add mouse hover event listeners to change text
     textElements.forEach((element) => {
         element.addEventListener('mouseover', () => {
-            effect.updateText(element.getAttribute('data-text'));
+            const newText = element.getAttribute('data-text');
+            console.log(`Hovering over: ${newText}`);
+            effect.updateText(newText);
+            clearTimeout(hoverTimeout); // Clear any existing hover timeout
+        });
+    });
+
+    // Handle mouse leave event to return to "PostQuem"
+    textElements.forEach((element) => {
+        element.addEventListener('mouseleave', () => {
+            clearTimeout(hoverTimeout); // Clear any hover timeout
+            hoverTimeout = setTimeout(() => {
+                console.log("Mouse left, reverting to PostQuem");
+                effect.updateText('PostQuem'); // Return to "PostQuem" after 3 seconds
+            }, 3000); // 3 seconds delay
         });
     });
 });
 
-// Show content when "Services" or "Contacts" is clicked
+// Show content when links are clicked
 document.addEventListener('DOMContentLoaded', function() {
+    const aproposLink = document.getElementById("apropos-link");
     const servicesLink = document.getElementById('services-link');
     const contactsLink = document.getElementById('contacts-link');
+    const aproposBlocks = document.getElementById("apropos-blocks");
     const servicesBlocks = document.getElementById('services-blocks');
     const contactsBlocks = document.getElementById('contacts-blocks');
 
+    // Function to hide all blocks and show the selected one
+    function hideAllBlocks() {
+        aproposBlocks.style.display = 'none';
+        servicesBlocks.style.display = 'none';
+        contactsBlocks.style.display = 'none';
+    }
+
+    // Show Services content
     servicesLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default anchor behavior
+        hideAllBlocks(); // Hide all content blocks
         servicesBlocks.style.display = 'flex'; // Show the services blocks
-        contactsBlocks.style.display = 'none'; // Hide the contacts blocks
         servicesBlocks.classList.add('show'); // Add the show class for fade-in
     });
 
+    // Show Contacts content
     contactsLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default anchor behavior
+        hideAllBlocks(); // Hide all content blocks
         contactsBlocks.style.display = 'flex'; // Show the contacts blocks
-        servicesBlocks.style.display = 'none'; // Hide the services blocks
         contactsBlocks.classList.add('show'); // Add the show class for fade-in
     });
+
+    // Show À propos content
+    aproposLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        hideAllBlocks(); // Hide all content blocks
+        aproposBlocks.style.display = 'flex'; // Show the À propos blocks
+        aproposBlocks.classList.add('show'); // Add the show class for fade-in
+    });
 });
+
+

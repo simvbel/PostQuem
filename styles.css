@@ -12,6 +12,7 @@ body {
     height: 400px; /* Set the height for the floating header */
     width: 100%;
     background-color: black; /* Ensure background is black */
+	
     margin: 0; /* Remove any margin around the header */
     padding: 0; /* Remove any padding around the header */
 }
@@ -36,16 +37,31 @@ body {
     right: 50px; /* 50px from the right edge */
     transform: translateY(-50%); /* Adjust vertical centering */
     display: flex;
-    justify-content: space-between; /* Position links on the sides */
+    justify-content: space-between; /* Distribute space between left and right sections */
     align-items: center; /* Center items vertically within the container */
     z-index: 10; /* Ensure it is on top of the canvas */
-    /*border: 2px solid blue; /* Debugging border */
+}
+
+.left-links {
+    display: flex; /* Use flexbox for left links */
+}
+
+.left-links a {
+    margin-right: 50px; /* Add margin to create space between left links */
+}
+
+.left-links a:last-child {
+    margin-right: 0; /* Remove margin from the last left link */
+}
+
+.right-links {
+    /* No additional styles needed unless you want specific positioning */
 }
 
 .word {
     opacity: 0; /* Start hidden */
     transition: opacity 2s ease-in-out, color 0.3s ease;
-    font-size: clamp(1.5rem, 2vw + 1rem, 3rem); /* Responsive font size using clamp */
+    font-size: clamp(1.2rem, 1.5vw + 0.8rem, 2.5rem); /* Responsive font size using clamp */
     color: white; /* Set the text color to white */
     text-decoration: none; /* Remove underline from links */
     pointer-events: none; /* Prevent interaction until visible */

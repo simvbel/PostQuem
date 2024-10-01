@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PostQuem</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Optional: Add description and keywords for SEO -->
     <meta name="description" content="PostQuem specializes in heritage analysis and archaeological services.">
     <meta name="keywords" content="heritage, archaeology, architectural analysis, geomatics, PostQuem">
 </head>
@@ -14,14 +13,22 @@
     <div id="header">
         <canvas id="canvas1"></canvas>
         <div class="parent-container">
+			<div class="overlay-image"></div> <!-- Overlay image div -->
             <div id="text-container">
-                <a href="#" id="services-link" class="word" data-text="Services">Services</a>
-                <a href="#" id="contacts-link" class="word" data-text="Contacts">Contacts</a>
-            </div>
-            <div class="version">ver. 1.18</div> <!-- Added Version Element -->
-        </div>	
-    </div>
+				<div class="left-links">
+					<a href="#" id="apropos-link" class="word" data-text="À propos">À propos</a>
+					<a href="#" id="services-link" class="word" data-text="Services">Services</a>
+				</div>
+				<div class="right-links">
+					<a href="#" id="contacts-link" class="word" data-text="Contacts">Contacts</a>
+				</div>
+			</div>
+		<div class="version">ver. 1.27</div> <!-- Added Version Element -->
+	</div>	
+        
+
     <div id="content">
+        <!-- Services Section -->
         <div id="services-blocks" class="content-blocks" style="display: none;">
             <div class="content-block">
                 <h2>Patrimoine et archéologie</h2>
@@ -38,12 +45,24 @@
             <div class="download-wrapper">    
                 <div class="download-section">
                     <a href="https://raw.githubusercontent.com/simvbel/PostQuem/main/Offre%20de%20services_PostQuem_20240520.pdf" download="PostQuem_Services.pdf" class="download-link">
-                        Télécharger la brochure PDF sur les services
+                        Télécharger la brochure sur nos services
                     </a>
                 </div>
             </div>
         </div>
         
+        <!-- À propos Section -->
+        <div id="apropos-blocks" class="content-blocks" style="display: none;">
+            <div class="content-block">
+                <h2>Du nouveau dans le quartier</h2>
+                <p>Nous vous remercions chaleureusement de prendre le temps d'explorer notre site. PostQuem est une nouvelle compagnie basée dans l'Outaouais, co-fondée par Simon Bélanger et Yanik Blouin, qui cumulent à eux deux 34 ans d'expérience dans le domaine de l'archéologie.
+Nous sommes ici pour répondre à vos besoins en matière de patrimoine et d'archéologie. N'hésitez pas à nous contacter pour toute question ou pour discuter de vos projets.
+
+Visitez-nous souvent pour découvrir les nouveautés et les changements apportés à notre site internet !</p>
+            </div>
+        </div>
+                
+        <!-- Contacts Section -->
         <div id="contacts-blocks" class="content-blocks" style="display: none;">
             <div class="content-block">
                 <h2>Coordonnées</h2>
@@ -55,6 +74,7 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="script.js"></script> <!-- Ensure script is loaded after the HTML body -->
 </body>
 </html>
